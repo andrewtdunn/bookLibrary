@@ -1,20 +1,11 @@
 {
-	"name":"omm-mobile"
+	"name":"backbone-library"
 ,	"version":"0.0.1"
-,	"private":true
+,	"description":"a private application using Backbone"
 ,	"dependencies": {
-		"requirejs":"latest"
-	,	"connect":"2.7.0"
+		"express":"~3.1.0"
+	,	"path":"~0.4.9"
+	, 	"mongoose": "~3.5.5"
 	}
 
-,	"devDependencies":{
-		"mocha":"latest"
-	,	"chai":"latest"
-	,	"grunt":"0.4.x"
-	,	"grunt-exec":"0.4.x"
-	,	"grunt-cli":"0.1.x"
-	}
-,	"scripts": {
-		"grunt":"node_modules/.bin/grunt"
-	}
 }

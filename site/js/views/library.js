@@ -23,10 +23,22 @@ app.LibraryView = Backbone.View.extend({
     formData = {};
     $("#addBook div").children("input").each(function(i, el) {
       if ($(el).val() !== "") {
-        formData[el.id] = $(el).val();
+        if (el.id === 'keywords') {
+          formData[el.id] = [];
+          _.each($(el).val().split(' '), function(keyword) {
+            formData[el.id].push({
+              'keyword': keyword
+            });
+          });
+        } else if (el.ed === "releaseDate") {
+          forData[el.id] = $('#releaseDate').datePicker('getDate').getTime();
+        } else {
+          formData[el.id] = $(el).val();
+        }
       }
+      $(el).val('');
     });
-    this.collection.add(new app.Book(formData));
+    this.collection.create(formData);
   },
   render: function() {
     this.collection.each(function(item) {

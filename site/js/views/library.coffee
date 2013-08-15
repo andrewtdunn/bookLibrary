@@ -19,11 +19,25 @@ app.LibraryView = Backbone.View.extend(
 
 		formData = {}
 		$("#addBook div").children("input").each (i, el) ->
-  			formData[el.id] = $(el).val()  unless $(el).val() is ""
-  			return 
+			unless $(el).val() is ""
+				if el.id is 'keywords'
+					formData[el.id] = []
+					_.each $(el).val().split(' '), (keyword)->
+						formData[el.id].push 'keyword': keyword
+						return
+				else if el.ed is "releaseDate"
+					forData[el.id] = $('#releaseDate').datePicker('getDate').getTime()
+				else
+					formData[el.id] = $(el).val()
+			$(el).val('')
+			return
 
-  		@collection.add new app.Book formData
-  		return
+		@collection.create formData
+		return
+
+  		
+  			
+
 
 	# render library by rendering each book in its collection
 	render: ->
